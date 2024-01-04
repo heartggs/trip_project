@@ -8,6 +8,8 @@ import styled from '@emotion/styled'
 import { Global } from '@emotion/react'
 import globalStyles from './styles/globalStyles'
 
+import { AlertContextProvider } from './contexts/AlertContext'
+
 const Container = styled.div`
   color: pink;
 `
@@ -15,7 +17,9 @@ const Container = styled.div`
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App />
+    <AlertContextProvider>
+      <App />
+    </AlertContextProvider>
     <Global styles={globalStyles} />
     <Container>react</Container>
   </React.StrictMode>,
