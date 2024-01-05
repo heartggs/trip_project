@@ -1,6 +1,19 @@
+import { useEffect } from 'react'
+
 import Top from '@shared/Top'
+import { getCard } from '../remote/card'
+import { getAdBanner } from '../remote/adBanner'
 
 function HomePage() {
+  useEffect(() => {
+    getCard().then((response) => {
+      console.log(response)
+    })
+
+    getAdBanner().then((response) => {
+      console.log(response)
+    })
+  }, [])
   return (
     <div>
       <Top
