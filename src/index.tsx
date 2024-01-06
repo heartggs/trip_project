@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -13,14 +14,19 @@ import { AlertContextProvider } from './contexts/AlertContext'
 const Container = styled.div`
   color: pink;
 `
+const client = new QueryClient({
+  defaultOptions: {},
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <AlertContextProvider>
-      <App />
-    </AlertContextProvider>
     <Global styles={globalStyles} />
+    <QueryClientProvider client={client}>
+      <AlertContextProvider>
+        <App />
+      </AlertContextProvider>
+    </QueryClientProvider>
     <Container>react</Container>
   </React.StrictMode>,
 )
